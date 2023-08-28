@@ -1,23 +1,19 @@
-import logo from './logo.svg';
 import './App.css';
+import Footer from './compenents/Footer';
+import Form from './compenents/Form';
+import List from './compenents/List';
+import { useState } from 'react';
 
 function App() {
+  const [inputText, setInputText] = useState('');
+  const [todos, setTodos] = useState([]);
+  const [counter, setCounter] = useState(0);
+  const [filter, setFilter] = useState('all');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="todoapp">
+      <Form todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText}/>
+      <List todos={todos} setTodos={setTodos} inputText={inputText} setInputText={setInputText} filter={filter}/>
+      <Footer todos={todos} setTodos={setTodos} counter={counter} setCounter={setCounter} filter={filter}  setFilter={setFilter}/>
     </div>
   );
 }
